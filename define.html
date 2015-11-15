@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>define-demo</title>
+</head>
+<body>
+
+</body>
+<script src="amd-define.js"></script>
+<script>
+    define("test-1", [], function(){
+        return {
+            name : "test-1",
+            func : function(){
+                console.log("test-1");
+                document.write("<p>test-1</p>");
+            }
+        }
+    });
+
+    define("test-2", function(){
+        return {
+            name : "test-2",
+            func : function(){
+                console.log("test-2");
+                document.write("<p>test-2</p>");
+            }
+        }
+    });
+
+    define(["test-1", "test-2"], function(t1, t2){
+        console.log("exec module-1");
+        document.write("<p>exec module-1</p>");
+        t1.func();
+        t2.func();
+    });
+
+    define(function(){
+        console.log("exec module-2");
+        document.write("<p>exec module-2</p>");
+    })
+
+</script>
+</html>
